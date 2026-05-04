@@ -255,19 +255,21 @@ ${values.length}
     function openGemini() {
         const text = promptOutput.textContent;
 
+        const geminiUrl = 'https://gemini.google.com/u/1/app?pageId=none';
+
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(text).then(() => {
                 showCopyStatus('✅ Промпт скопирован! Открываю Gemini...');
                 setTimeout(() => {
-                    window.open('https://gemini.google.com/app', '_blank');
+                    window.open(geminiUrl, '_blank');
                 }, 500);
             }).catch(() => {
                 fallbackCopy(text);
-                window.open('https://gemini.google.com/app', '_blank');
+                window.open(geminiUrl, '_blank');
             });
         } else {
             fallbackCopy(text);
-            window.open('https://gemini.google.com/app', '_blank');
+            window.open(geminiUrl, '_blank');
         }
     }
 

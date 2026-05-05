@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
         narrative: document.getElementById('narrative'),
         tone: document.getElementById('tone'),
         twist: document.getElementById('twist'),
+        heroine_char: document.getElementById('heroine_char'),
+        antagonist_mask: document.getElementById('antagonist_mask'),
+        ally: document.getElementById('ally'),
+        title_style: document.getElementById('title_style'),
         length: document.getElementById('length')
     };
 
@@ -60,8 +64,14 @@ document.addEventListener('DOMContentLoaded', function() {
 🎭 ГЛАВНАЯ ГЕРОИНЯ:
 ${values.heroine}
 
+💎 ХАРАКТЕР ГЕРОИНИ:
+${values.heroine_char}
+
 😈 АНТАГОНИСТ:
 ${values.antagonist}
+
+🎭 МАСКА АНТАГОНИСТА (как именно притворяется хорошим):
+${values.antagonist_mask}
 
 💔 СУТЬ КОНФЛИКТА (предательство):
 ${values.betrayal}
@@ -71,6 +81,9 @@ ${values.revelation}
 
 💸 ЧТО ГЕРОИНЯ ОТДАЛА/ПОТЕРЯЛА:
 ${values.sacrifice}
+
+🤝 СОЮЗНИК ГЕРОИНИ:
+${values.ally}
 
 🏆 ФИНАЛ:
 ${values.ending}
@@ -86,6 +99,9 @@ ${values.tone}
 
 🔄 ПОВОРОТ СЮЖЕТА:
 ${values.twist}
+
+📰 СТИЛЬ ЗАГОЛОВКА:
+${values.title_style}
 
 📏 ОБЪЁМ:
 ${values.length}
@@ -175,13 +191,52 @@ ${values.length}
 • Неожиданный помощник: может быть кто угодно — бывший коллега, случайный сосед
 • Антагонист разоблачает себя: жадность, хвастовство, случайная оговорка
 • Не первая жертва: героиня находит других пострадавших — это укрепляет её позицию
-═══════════════════════════════════════════
+
+💎 ХАРАКТЕР ГЕРОИНИ — определяет её внутренний голос и реакции:
+• Терпеливая мученица: долгое молчание, копящаяся боль, взрыв в финале
+• Сильная но наивная: покажи её уверенность в профессии — и слепоту в любви
+• Циничная снаружи: пусть читатель видит, как трудно ей признать, что она тоже поверила
+• Тихая с стержнем: минимум слов, максимум действий — решения принимаются молча
+• Усталая: покажи через детали быта — как она перестала следить за собой, за домом
+• Гордая: гордость мешает попросить помощь — и именно это делает победу слаще
+• Добрая: каждая её помощь антагонисту должна отзываться болью у читателя
+• Реалистка: она замечала несостыковки — но рациональный ум придумывал объяснения
+
+🎭 МАСКА АНТАГОНИСТА — показывай её постепенно, слой за слоем:
+• Сначала маска кажется убедительной — читатель тоже должен «попасться»
+• Постепенно появляются трещины — маленькие детали, которые что-то не то
+• В кульминации маска слетает полностью — и это должно быть страшно и облегчительно одновременно
+• Каждый тип маски имеет свою «фирменную» фразу — придумай её для антагониста
+
+🤝 СОЮЗНИК — встраивается органично:
+• Появляется тогда, когда героиня уже почти сдалась или совсем одна
+• Его роль — не решить за неё, а дать ей инструмент или информацию
+• Союзник сам может быть несовершенным, со своей историей
+• Если героиня одна — её внутренний монолог в момент принятия решения и есть союзник
+
+📰 ЗАГОЛОВОК — строго по выбранному стилю, используй конкретные детали из рассказа:
+• Число+факт: реальные цифры из истории (лет брака, сумма в рублях, месяцев обмана)
+• Парадокс: первое действие героини — её доброта, второе — как оно обернулось
+• Вопрос: задай его так, чтобы читатель не мог не кликнуть
+• От первого лица: конкретная деталь, которая есть в рассказе — вещь, место, момент
+• Контраст: «тогда» — максимально унизительно, «сейчас» — максимально победно
+
+🎯 ЯКОРНЫЕ ДЕТАЛИ — обязательные элементы живой истории:
+В каждой сцене должна быть минимум одна конкретная деталь:
+• Вещи: конкретная марка чашки, цвет шторы, запах духов антагониста
+• Цифры: точная сумма в рублях, дата, количество лет
+• Звуки: скрип двери, тон голоса, звук уведомления на телефоне
+• Физические ощущения: как похолодели руки, как остановилось дыхание
+Эти детали делают историю настоящей — читатель чувствует, что это случилось
+
+⚡ МОМЕНТ ВЫБОРА героини — обязательная сцена:
+Должна быть чёткая сцена, где героиня принимает решение действовать. Не «она решила» — а показано как: что она делала в этот момент, где была, что почувствовала. Это поворотная точка всей истории.═══════════════════════════════════════════
 
 ЧАСТЬ 1 — ЗАГОЛОВОК (вывести в тексте)
-Цепляющий, от первого лица, с интригой. Примеры стиля:
-• "25 лет я экономила на себе, веря, что мы копим на спокойную старость. А муж уже 5 лет платил ипотеку своей секретарше."
-• "Приютила 'бедную' троюродную сестру из деревни. А она за месяц настроила против меня детей и попыталась поменять замки в моей же квартире."
-• "Родная сестра со слезами выманила деньги на операцию. Я продала машину, а потом увидела её новые фото с Мальдив... в обнимку с моим мужем."
+Строго следуй выбранному стилю заголовка. Примеры разных стилей:
+• Число+факт: "25 лет я экономила на себе, веря, что мы копим на спокойную старость. А муж уже 5 лет платил ипотеку своей секретарше."
+• Парадокс: "Приютила 'бедную' троюродную сестру из деревни. А она за месяц настроила против меня детей и попыталась поменять замки в моей же квартире."
+• От первого лица: "Родная сестра со слезами выманила деньги на операцию. Я продала машину, а потом увидела её новые фото с Мальдив... в обнимку с моим мужем."
 
 ЧАСТЬ 2 — ЗАВЯЗКА (10-15% текста, без подзаголовка)
 • Подробное описание обычной жизни героини
@@ -285,21 +340,24 @@ ${values.length}
 ═══════════════════════════════════════════
 
 ✅ ОБЯЗАТЕЛЬНО:
-• Повествование от первого или третьего лица (выбери уместное)
-• Детальный быт: марки машин, цены в рублях, бренды одежды, запахи, звуки
-• Внутренние монологи героини — короткие, точные, без слезливости
-• Метафоры и образные описания (сердце, ухнувшее куда-то в желудок; ледяная ярость)
+• Повествование от первого или третьего лица — строго в выбранном тоне на протяжении всего рассказа
+• Якорные детали в каждой сцене: конкретная вещь, запах, звук, сумма в рублях, дата
+• Диалоги составляют не менее 35% текста — реплики через тире, каждый персонаж говорит по-своему
+• Внутренние монологи героини — короткие, точные, в выбранном тоне
+• Маска антагониста раскрывается постепенно — сначала убедительная, потом трещины, потом слом
+• Обязательная сцена МОМЕНТА ВЫБОРА: показано как именно героиня принимает решение действовать
+• Союзник появляется в нужный момент — его роль конкретна и органична
 • Контраст: тёплые бытовые детали ДО предательства vs холодная решимость ПОСЛЕ
 • Конкретные суммы денег (рубли), названия документов (ЕГРН, выписки, договоры)
-• Реалистичные детали: суды, адвокаты, банки, полиция
-• Плавные переходы между сценами без служебных пометок
+• Реалистичные детали: суды, адвокаты, банки, полиция — не «пошла к юристу», а конкретный разговор
+• Сеттинг работает на сюжет: провинция даёт слухи, мегаполис — анонимность, деревня — землю
 
 ❌ ИЗБЕГАЙ:
 • Пересказа вместо диалога — это главная ошибка, убивающая драму
-• Истерик и слезливости героини
+• Истерик и слезливости героини — сила молчания страшнее крика
 • Сказочных совпадений (всё должно быть правдоподобно)
-• Морализаторства автора (мораль доносится через действия)
-• Излишней жестокости или нецензурной лексики
+• Общих фраз без деталей: не «она была расстроена», а «руки не слушались, чашка выскользнула»
+• Морализаторства автора (мораль доносится через действия, не через авторский комментарий)
 • Затянутых описаний без диалога (более 6 предложений подряд без реплики)
 • ЛЮБЫХ подзаголовков, нумерации частей, markdown-разметки в финальном тексте
 
@@ -490,53 +548,112 @@ ${values.length}
     }
 
     // Генерация промпта для обложки (драматический стиль)
+    // Фото строится из деталей конфликта — без split-композиции
     function generateImagePrompt(values) {
-        // Определяем возраст и внешность героини из параметра
+
+        // Внешность героини по профессии
         const heroineMap = {
-            'Вдова': 'a Russian woman in her late 40s, tired but dignified face, simple but neat clothing',
-            'Финансовый аналитик': 'a Russian woman in her late 30s, professional look, elegant business attire',
-            'Жена бизнесмена': 'a Russian woman in her early 40s, well-dressed, composed expression',
-            'Мать взрослого': 'a Russian woman in her early 50s, warm face, modest clothing',
-            'Работающая мать': 'a Russian woman in her mid-30s, exhausted but strong, casual clothes',
-            'Главбух': 'a Russian woman in her mid-40s, strict posture, glasses, office attire',
-            'Редактор': 'a Russian woman in her late 30s, creative look, casual elegant style',
-            'Логист': 'a Russian woman in her early 40s, confident look, business casual',
-            'Учительница': 'a Russian woman in her mid-40s, kind but firm face, modest dress',
-            'Медсестра': 'a Russian woman in her late 30s, tired compassionate face, scrubs or casual',
-            'Предпринимательница': 'a Russian woman in her late 30s, confident powerful look, stylish outfit',
-            'Дизайнер': 'a Russian woman in her early 40s, artistic appearance, creative clothing',
-            'Юрист': 'a Russian woman in her late 30s, sharp intelligent eyes, strict suit',
-            'Программист': 'a Russian woman in her mid-30s, smart casual look, glasses',
-            'Фрилансер': 'a Russian woman in her early 30s, home casual clothes, tired look',
+            'Вдова': 'Russian woman, late 40s, tired dignified face, simple neat clothing',
+            'Финансовый': 'Russian woman, late 30s, professional look, elegant business attire',
+            'Жена бизнесмена': 'Russian woman, early 40s, well-dressed, composed expression',
+            'Мать взрослого': 'Russian woman, early 50s, warm face, modest clothing',
+            'Работающая мать': 'Russian woman, mid-30s, strong but exhausted, casual clothes',
+            'Главбух': 'Russian woman, mid-40s, strict posture, glasses, office attire',
+            'Редактор': 'Russian woman, late 30s, creative style, casual elegant',
+            'Логист': 'Russian woman, early 40s, confident, business casual',
+            'Учительница': 'Russian woman, mid-40s, kind but firm face, modest dress',
+            'Медсестра': 'Russian woman, late 30s, compassionate tired face',
+            'Предпринимательница': 'Russian woman, late 30s, confident powerful, stylish outfit',
+            'Дизайнер': 'Russian woman, early 40s, artistic appearance, creative clothing',
+            'Юрист': 'Russian woman, late 30s, sharp intelligent eyes, strict suit',
+            'Психолог': 'Russian woman, early 40s, thoughtful calm face, professional look',
+            'Журналист': 'Russian woman, late 30s, determined look, smart casual',
+            'Рестораторша': 'Russian woman, early 40s, energetic, business casual',
+            'Программист': 'Russian woman, mid-30s, smart casual, glasses',
+            'Фрилансер': 'Russian woman, early 30s, home casual, tired look',
         };
 
-        let heroineDesc = 'a Russian woman in her 40s, strong and dignified';
+        let heroine = 'Russian woman in her 40s, strong and dignified';
         for (const [key, val] of Object.entries(heroineMap)) {
-            if (values.heroine && values.heroine.includes(key)) { heroineDesc = val; break; }
+            if (values.heroine && values.heroine.includes(key)) { heroine = val; break; }
         }
 
-        // Финал определяет правую часть (после)
-        const isHappyEnding = values.ending && (
+        // Атмосфера и локация из сеттинга
+        const settingMap = {
+            'провинциальный': 'small Russian town, old apartment building, neighbours watching from windows',
+            'Мегаполис': 'modern Moscow or Saint Petersburg apartment interior, city lights in background',
+            'Дача': 'Russian dacha or countryside house, garden, wooden fence, birch trees',
+            'региональный': 'mid-size Russian city street, Soviet-era architecture',
+            'профессиональное': 'office corridor, conference room, professional environment',
+            'Новостройка': 'modern apartment complex, sterile hallway, elevator door',
+            'Курортный': 'southern Russian city, warm light, palm trees or sea in background',
+            'Зарубежье': 'foreign city street, unfamiliar architecture, isolated feeling',
+        };
+        let location = 'Russian apartment interior, dramatic lighting';
+        for (const [key, val] of Object.entries(settingMap)) {
+            if (values.setting && values.setting.includes(key)) { location = val; break; }
+        }
+
+        // Ключевой предмет из предательства
+        const betrayalProps = {
+            'Финансовое': 'bank statements spread on a table, numbers highlighted in red',
+            'Захват жилья': 'changed door lock, keys on the floor',
+            'Фальшивая': 'medical documents with stamps, prescription papers',
+            'унижение': 'crowded room, frozen faces of witnesses',
+            'детьми': 'child standing between two adults, looking confused',
+            'ипотека': 'mortgage documents, second set of keys',
+            'кредиты': 'stack of debt notices, credit cards',
+            'Шантаж': 'phone screen with threatening messages',
+            'наследство': 'will documents, notary seal',
+            'Клевета': 'smartphone with social media posts, shocked face',
+            'дарственная': 'property transfer documents with signature',
+            'Тайный ребёнок': 'birth certificate, child photo hidden in wallet',
+            'Двойная жизнь': 'two phones, two sets of keys, hotel receipt',
+            'завещания': 'official document with forged signature',
+            'Газлайтинг': 'woman looking at herself in mirror, uncertain expression',
+        };
+        let prop = 'important documents on a table, dramatic shadows';
+        for (const [key, val] of Object.entries(betrayalProps)) {
+            if (values.betrayal && values.betrayal.includes(key)) { prop = val; break; }
+        }
+
+        // Эмоция героини из тона
+        const toneEmotion = {
+            'Холодный': 'ice-cold determined expression, composed, calculating gaze',
+            'Горький': 'bitter half-smile, knowing eyes, quiet sorrow',
+            'Гневный': 'barely contained fury, jaw set, intense eyes',
+            'Сдержанный': 'dignified silence, straight posture, quiet strength',
+            'Усталый': 'tired wisdom in eyes, deep calm after a storm',
+        };
+        let emotion = 'strong composed expression, quiet dignity';
+        for (const [key, val] of Object.entries(toneEmotion)) {
+            if (values.tone && values.tone.includes(key)) { emotion = val; break; }
+        }
+
+        // Световая атмосфера из финала
+        const endingLight = values.ending && (
             values.ending.includes('карьера') || values.ending.includes('любовь') ||
-            values.ending.includes('свобода') || values.ending.includes('переезд') ||
-            values.ending.includes('уход') || values.ending.includes('книга')
-        );
+            values.ending.includes('переезд') || values.ending.includes('книга') ||
+            values.ending.includes('свобода') || values.ending.includes('уход')
+        )
+            ? 'warm golden light entering from the side, hopeful atmosphere'
+            : 'dramatic cinematic lighting, strong contrast, shadows and light fighting';
 
-        const afterScene = isHappyEnding
-            ? 'right side: same woman confident and free, warm golden sunlight, new beginning, soft smile, stylish outfit, bright modern interior or outdoor setting with sunshine'
-            : 'right side: same woman calm and victorious, walking away with dignity, soft warm light, confident posture';
+        return `Cinematic photorealistic cover image for a Russian drama story, horizontal 16:9 format, high quality, no text, no watermarks.
 
-        return `Cinematic split-composition photo for a Russian drama story cover, horizontal 16:9 format, photorealistic, high quality.
+Main subject: ${heroine}, ${emotion}.
 
-Left side (cold tones, blue-grey palette, dramatic shadows): ${heroineDesc}, distressed expression, holding documents or looking at phone with shocking information, dark modern Russian apartment interior, cold desaturated colors, cinematic shadows, emotional tension.
+Setting: ${location}.
 
-${afterScene}
+Key story element in frame: ${prop}.
 
-Center: dramatic diagonal crack or tear splitting the two halves of the image, symbolizing the turning point.
+Lighting: ${endingLight}.
 
-Style: cinematic photorealism, film production quality, sharp focus, professional lighting, emotional storytelling. Similar to Russian TV drama poster aesthetic. No text, no watermarks, no logos.
+Composition: the woman is the emotional center of the frame, story details surround her naturally — not staged, but as if caught in a real moment. Close-up or medium shot, shallow depth of field, sharp focus on her face and the key prop.
 
-Technical: 16:9 aspect ratio, 1280x720px minimum, high detail, realistic skin textures, natural lighting, shallow depth of field on faces.`;
+Style: cinematic photorealism, Russian TV drama quality, emotionally charged, authentic Russian domestic or urban environment. Natural skin textures, real fabric details, believable props. No artificial studio look — this feels like a real moment captured.
+
+Technical: 16:9 aspect ratio, 1280x720px minimum, film grain texture, rich color grading with desaturated midtones and warm or cold accent depending on the lighting.`;
     }
 
     // Сброс красной рамки при выборе

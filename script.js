@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultCard = document.getElementById('resultCard');
     const promptOutput = document.getElementById('promptOutput');
     const copyStatus = document.getElementById('copyStatus');
+    const copyImageBtn = document.getElementById('copyImageBtn');
+    const imagePromptOutput = document.getElementById('imagePromptOutput');
+    const copyImageStatus = document.getElementById('copyImageStatus');
 
     const selects = {
         heroine: document.getElementById('heroine'),
@@ -279,6 +282,11 @@ ${values.length}
 Прежде чем закончить рассказ — убедись, что объём текста попадает в требуемый диапазон слов. Если текст оказался короче нижней границы, продолжай писать: расширяй сцены, добавляй внутренние монологи, диалоги, бытовые детали, побочные эпизоды. Не останавливайся, пока не достигнешь нижней границы диапазона. Это обязательное требование.`;
 
             promptOutput.textContent = prompt;
+
+            // Генерируем промпт для изображения
+            const imagePrompt = generateImagePrompt(values);
+            imagePromptOutput.textContent = imagePrompt;
+
             resultCard.style.display = 'block';
 
             setTimeout(() => {
@@ -410,6 +418,79 @@ ${values.length}
     if (copyBtn) copyBtn.addEventListener('click', copyToClipboard);
     if (geminiBtn) geminiBtn.addEventListener('click', openGemini);
     if (claudeBtn) claudeBtn.addEventListener('click', openClaude);
+    if (copyImageBtn) copyImageBtn.addEventListener('click', () => {
+        const text = imagePromptOutput.textContent;
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                copyImageStatus.textContent = '✅ Промпт для обложки скопирован!';
+                copyImageStatus.style.opacity = '1';
+                setTimeout(() => { copyImageStatus.style.opacity = '0'; }, 3000);
+            }).catch(() => fallbackCopyImage(text));
+        } else { fallbackCopyImage(text); }
+    });
+
+    function fallbackCopyImage(text) {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-999999px';
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        try {
+            const ok = document.execCommand('copy');
+            copyImageStatus.textContent = ok ? '✅ Скопировано!' : '❌ Не удалось скопировать.';
+        } catch { copyImageStatus.textContent = '❌ Скопируйте вручную.'; }
+        copyImageStatus.style.opacity = '1';
+        setTimeout(() => { copyImageStatus.style.opacity = '0'; }, 3000);
+        document.body.removeChild(ta);
+    }
+
+    // Генерация промпта для обложки (драматический стиль)
+    function generateImagePrompt(values) {
+        // Определяем возраст и внешность героини из параметра
+        const heroineMap = {
+            'Вдова': 'a Russian woman in her late 40s, tired but dignified face, simple but neat clothing',
+            'Финансовый аналитик': 'a Russian woman in her late 30s, professional look, elegant business attire',
+            'Жена бизнесмена': 'a Russian woman in her early 40s, well-dressed, composed expression',
+            'Мать взрослого': 'a Russian woman in her early 50s, warm face, modest clothing',
+            'Работающая мать': 'a Russian woman in her mid-30s, exhausted but strong, casual clothes',
+            'Главбух': 'a Russian woman in her mid-40s, strict posture, glasses, office attire',
+            'Редактор': 'a Russian woman in her late 30s, creative look, casual elegant style',
+            'Логист': 'a Russian woman in her early 40s, confident look, business casual',
+            'Учительница': 'a Russian woman in her mid-40s, kind but firm face, modest dress',
+            'Медсестра': 'a Russian woman in her late 30s, tired compassionate face, scrubs or casual',
+            'Предпринимательница': 'a Russian woman in her late 30s, confident powerful look, stylish outfit',
+            'Дизайнер': 'a Russian woman in her early 40s, artistic appearance, creative clothing',
+            'Юрист': 'a Russian woman in her late 30s, sharp intelligent eyes, strict suit',
+            'Программист': 'a Russian woman in her mid-30s, smart casual look, glasses',
+            'Фрилансер': 'a Russian woman in her early 30s, home casual clothes, tired look',
+        };
+
+        let heroineDesc = 'a Russian woman in her 40s, strong and dignified';
+        for (const [key, val] of Object.entries(heroineMap)) {
+            if (values.heroine && values.heroine.includes(key)) { heroineDesc = val; break; }
+        }
+
+        // Финал определяет правую часть (после)
+        const isHappyEnding = values.ending && (
+            values.ending.includes('карьера') || values.ending.includes('любовь') ||
+            values.ending.includes('свобода') || values.ending.includes('переезд') ||
+            values.ending.includes('уход') || values.ending.includes('книга')
+        );
+
+        const afterScene = isHappyEnding
+            ? 'right side: same woman confident and free, warm golden sunlight, new beginning, soft smile, stylish outfit, bright modern interior or outdoor setting with sunshine'
+            : 'right side: same woman calm and victorious, walking away with dignity, soft warm light, confident posture';
+
+        return `Cinematic split-composition photo for a Russian drama story cover, horizontal 16:9 format, photorealistic, high quality.
+
+Left side (cold tones, blue-grey palette, dramatic shadows): ${heroineDesc}, distressed expression, holding documents or looking at phone with shocking information, dark modern Russian apartment interior, cold desaturated colors, cinematic shadows, emotional tension.
+
+${afterScene}
+
+Center: dramatic diagonal crack or tear splitting the two halves of the image, symbolizing the turning point.
+
+Style: cinematic photorealism, film production quality, sharp focus, professional lighting, emotional storytelling. Similar to Russian TV drama poster aesthetic. No text, no watermarks, no logos.
+
+Technical: 16:9 aspect ratio, 1280x720px minimum, high detail, realistic skin textures, natural lighting, shallow depth of field on faces.`;
+    }
 
     // Сброс красной рамки при выборе
     for (const key in selects) {

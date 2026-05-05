@@ -1,343 +1,251 @@
-/* ===== RESET & BASE ===== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор промптов: Драматические истории о справедливости</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎭 Генератор промптов</h1>
+            <p class="subtitle">Драматические истории о предательстве, справедливости и силе духа</p>
+        </header>
 
-:root {
-    --bg: #fdf6ec;
-    --card-bg: #ffffff;
-    --primary: #e07b39;
-    --primary-dark: #c4621e;
-    --secondary: #f5c842;
-    --accent: #3a8c6e;
-    --accent-dark: #2d7057;
-    --text: #2c2a26;
-    --text-muted: #7a7060;
-    --border: #e8ddd0;
-    --input-bg: #fdf9f4;
-    --shadow: 0 4px 24px rgba(100,60,10,0.10);
-    --shadow-hover: 0 8px 32px rgba(100,60,10,0.18);
-    --radius: 16px;
-    --radius-sm: 10px;
-    --gemini: #4285f4;
-    --gemini-dark: #2b6cb0;
-    --claude: #cc785c;
-    --claude-dark: #b5653a;
-}
+        <main>
+            <div class="generator-card">
+                <h2>Параметры истории</h2>
 
-body {
-    font-family: 'Nunito', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-}
+                <!-- Тип героини -->
+                <div class="form-group">
+                    <label for="heroine">👩 Тип героини</label>
+                    <select id="heroine">
+                        <option value="">Выберите...</option>
+                        <option value="Вдова 45-50 лет, одна растила двоих детей, работает бухгалтером">Вдова 45-50, бухгалтер, двое детей</option>
+                        <option value="Финансовый аналитик 35-45 лет, замужем, без детей">Финансовый аналитик 35-45</option>
+                        <option value="Жена успешного бизнесмена, сама работает в крупной компании">Жена бизнесмена + своя карьера</option>
+                        <option value="Мать взрослого сына 50-55 лет, вдова, гордится сыном">Мать взрослого сына (свекровь)</option>
+                        <option value="Работающая мать с двумя детьми, муж в командировках">Работающая мать с двумя детьми</option>
+                        <option value="Главный бухгалтер в небольшой фирме, замужем 25 лет">Главбух с большим стажем брака</option>
+                        <option value="Редактор в издательстве, маленькая дочь, муж безработный">Редактор/копирайтер</option>
+                        <option value="Логист/менеджер проектов в крупной компании">Логист/менеджер проектов</option>
+                        <option value="Учительница средней школы, замужем, дети-подростки">Учительница</option>
+                        <option value="Медсестра в частной клинике, разведена, есть ребёнок">Медсестра/врач</option>
+                        <option value="Успешная предпринимательница, владелица собственного бизнеса">Успешная предпринимательница</option>
+                        <option value="Дизайнер интерьеров/архитектор, фрилансер">Дизайнер/архитектор</option>
+                        <option value="Юрист в крупной компании, замужем, дети">Юрист/нотариус</option>
+                        <option value="Программист/IT-специалист, удалённая работа">Программист/IT-специалист</option>
+                        <option value="Фрилансер на удалёнке, мама дошкольника">Фрилансер с маленьким ребёнком</option>
+                        <option value="Владелица небольшой пекарни/кофейни, поднявшая бизнес с нуля">Владелица пекарни/кофейни</option>
+                        <option value="Кадровик в крупной компании, замужем 20 лет, взрослая дочь">Кадровик с 20-летним стажем брака</option>
+                        <option value="Ветеринар в частной клинике, разведена, живёт с кошками">Ветеринар, одинокая</option>
+                        <option value="Психолог в частной практике, замужем за коллегой">Психолог в частной практике</option>
+                        <option value="Старший библиотекарь, 50 лет, живёт с престарелой матерью">Библиотекарь со старой матерью</option>
+                        <option value="Рестораторша, открыла семейное кафе вместе с мужем">Рестораторша (семейный бизнес с мужем)</option>
+                        <option value="Журналистка-расследовательница регионального издания">Журналистка-расследовательница</option>
+                        <option value="Хозяйка цветочного магазина, развелась 5 лет назад">Хозяйка цветочного магазина</option>
+                    </select>
+                </div>
 
-/* ===== BACKGROUND PATTERN ===== */
-.bg-pattern {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    background-image:
-        radial-gradient(circle at 15% 20%, rgba(224,123,57,0.10) 0%, transparent 45%),
-        radial-gradient(circle at 85% 75%, rgba(245,200,66,0.12) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(58,140,110,0.06) 0%, transparent 60%);
-    pointer-events: none;
-}
+                <!-- Тип антагониста -->
+                <div class="form-group">
+                    <label for="antagonist">😈 Тип антагониста</label>
+                    <select id="antagonist">
+                        <option value="">Выберите...</option>
+                        <option value="Муж и его молодая любовница-секретарша, на которую он тайно тратит семейные деньги">Муж + любовница-секретарша</option>
+                        <option value="Муж и родная младшая сестра героини, которая выманила деньги под предлогом болезни">Муж + родная сестра (любовники)</option>
+                        <option value="Троюродная сестра 'из деревни', попросившая временного приюта">Троюродная родственница из деревни</option>
+                        <option value="Невестка-мошенница, симулирующая смертельную болезнь">Невестка-мошенница (фальшивая болезнь)</option>
+                        <option value="Золовка-нахлебница с детьми, привыкшая жить за чужой счёт">Золовка-нахлебница с детьми</option>
+                        <option value="Свекровь-снобка из 'высшего общества', презирающая невестку">Свекровь-снобка (высшее общество)</option>
+                        <option value="Свекровь-тиран, вторгающаяся в жизнь молодой семьи без спроса">Свекровь-тиран (нарушает границы)</option>
+                        <option value="Родная мать героини, инфантильная и эгоистичная">Родная мать (инфантильная)</option>
+                        <option value="Лучшая подруга, оказавшаяся предательницей">Лучшая подруга-предательница</option>
+                        <option value="Младшая сестра, избалованная 'принцесса семьи'">Младшая сестра (принцесса семьи)</option>
+                        <option value="Двоюродный брат/сестра-мошенник, прикидывающийся жертвой обстоятельств">Двоюродный родственник-мошенник</option>
+                        <option value="Бывший муж и его новая жена, претендующие на имущество">Бывший муж + новая жена</option>
+                        <option value="Коллега по работе, плетущая интриги ради повышения">Коллега-интриганка</option>
+                        <option value="Соседка-манипуляторша, вторгающаяся в жизнь семьи">Соседка-манипуляторша</option>
+                        <option value="Дальняя 'бедная' родственница, оказавшаяся хищницей">Дальняя 'бедная' родственница</option>
+                        <option value="Племянница-инфлюэнсер, использующая семью ради контента и денег">Племянница-инфлюэнсер</option>
+                        <option value="Деловой партнёр-аферист, похитивший прибыль и репутацию">Деловой партнёр-аферист</option>
+                        <option value="Сын от первого брака мужа, претендующий на квартиру героини">Пасынок-наследник</option>
+                        <option value="Молодая мачеха отца, охотящаяся за наследством">Мачеха-охотница за наследством</option>
+                        <option value="Тётка-манипуляторша, навязавшаяся 'помогать' с детьми">Тётка-надзирательница</option>
+                        <option value="Подчинённая, плетущая интриги, чтобы занять кресло героини">Подчинённая-карьеристка</option>
+                        <option value="Зять-альфонс, женившийся на дочери ради квартиры героини">Зять-альфонс</option>
+                        <option value="Сватья, разрушающая брак сына/дочери ради своих интересов">Сватья-разрушительница</option>
+                    </select>
+                </div>
 
-/* ===== CONTAINER ===== */
-.container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 32px 20px 60px;
-    position: relative;
-    z-index: 1;
-}
+                <!-- Вид предательства -->
+                <div class="form-group">
+                    <label for="betrayal">💔 Вид предательства</label>
+                    <select id="betrayal">
+                        <option value="">Выберите...</option>
+                        <option value="Финансовое предательство: антагонист годами тайно тратит семейные деньги, пока героиня экономит на себе">Финансовое (тайные траты годами)</option>
+                        <option value="Захват жилья: антагонист меняет замки в квартире героини, пытаясь её выжить">Захват жилья (смена замков)</option>
+                        <option value="Фальшивая смертельная болезнь: антагонист симулирует тяжёлый диагноз ради денег">Фальшивая смертельная болезнь</option>
+                        <option value="Публичное унижение: антагонист унижает героиню или её родителей перед гостями">Публичное унижение перед гостями</option>
+                        <option value="Манипуляция детьми: антагонист настраивает детей против матери">Манипуляция детьми против матери</option>
+                        <option value="Тайная ипотека: муж 5 лет платит ипотеку любовнице, пока жена экономит">Тайная ипотека на любовницу</option>
+                        <option value="Спуск всех денег: антагонист тратит всю зарплату героини на банкет/прихоти">Спуск всей зарплаты на банкет</option>
+                        <option value="Продажа имущества без согласия: антагонист распоряжается чужой собственностью">Продажа имущества без согласия</option>
+                        <option value="Оформление кредитов на чужое имя или с обманом">Кредиты с обманом</option>
+                        <option value="Шантаж и угрозы для получения имущества или денег">Шантаж и угрозы</option>
+                        <option value="Присвоение наследства родителей через манипуляции">Присвоение наследства</option>
+                        <option value="Клевета и репутационный урон в семье или на работе">Клевета и репутационный урон</option>
+                        <option value="Тайный второй ребёнок на стороне, о котором муж скрывал годами">Тайный ребёнок на стороне</option>
+                        <option value="Подделка подписи героини на документах (доверенность, договор)">Подделка подписи на документах</option>
+                        <option value="Кража бизнес-идеи и увод клиентов из компании героини">Кража бизнеса и клиентов</option>
+                        <option value="Тайная продажа квартиры родителей героини с разделом денег">Тайная продажа родительской квартиры</option>
+                        <option value="Подмена завещания пожилого родственника в свою пользу">Подмена завещания</option>
+                        <option value="Намеренное доведение до увольнения через интриги на работе">Травля и увольнение через интриги</option>
+                        <option value="Тайное оформление дарственной на квартиру героини в свою пользу">Тайная дарственная на квартиру</option>
+                        <option value="Содержание любовницы в съёмной квартире за счёт семейного бюджета">Содержание любовницы за счёт семьи</option>
+                        <option value="Психологический абьюз и газлайтинг: героиню годами убеждали, что она 'не в себе'">Газлайтинг и психологический абьюз</option>
+                        <option value="Эмоциональное предательство: антагонист годами скрывал двойную жизнь">Двойная жизнь годами</option>
+                    </select>
+                </div>
 
-/* ===== HEADER ===== */
-header {
-    text-align: center;
-    margin-bottom: 36px;
-}
+                <!-- Способ открытия правды -->
+                <div class="form-group">
+                    <label for="revelation">🔍 Способ открытия правды</label>
+                    <select id="revelation">
+                        <option value="">Выберите...</option>
+                        <option value="Случайный телефонный звонок из клиники, банка или другого учреждения, раскрывающий обман">Случайный звонок из учреждения</option>
+                        <option value="Найденные банковские выписки или документы, выпавшие из папки/ящика стола">Найденные банковские выписки</option>
+                        <option value="Фотографии из соцсетей: антагонист на курорте, пока героиня страдает">Фото из соцсетей (курорт)</option>
+                        <option value="Переписка в мессенджере (WhatsApp/Telegram), забытая на чужом телефоне">Переписка в мессенджере</option>
+                        <option value="Частный детектив, нанятый героиней для проверки подозрений">Частный детектив</option>
+                        <option value="Свидетель (сосед, коллега, домработница) случайно раскрывает правду">Свидетель раскрывает правду</option>
+                        <option value="Ребёнок случайно проговаривается о том, что слышал/видел">Ребёнок случайно проговорился</option>
+                        <option value="Документы выпали из сумки/портфеля антагониста">Документы выпали случайно</option>
+                        <option value="Звонок из банка о просроченных долгах или подозрительных операциях">Звонок из банка о долгах</option>
+                        <option value="Видео или аудиозапись разговора, попавшая к героине">Видео/аудиозапись</option>
+                        <option value="Курьер привозит посылку/документы по неожиданному адресу">Курьер с подозрительной посылкой</option>
+                        <option value="Уведомление от Госуслуг или налоговой о неизвестной сделке">Уведомление от Госуслуг/налоговой</option>
+                        <option value="Старая подруга случайно встречает антагониста в неожиданном месте">Случайная встреча подруги с антагонистом</option>
+                        <option value="Бухгалтер или нотариус замечает несостыковки в документах">Бухгалтер замечает несостыковки</option>
+                        <option value="Анонимное письмо или сообщение от 'доброжелателя'">Анонимное письмо</option>
+                        <option value="Записка или вещь, забытая антагонистом в кармане одежды">Забытая записка в кармане</option>
+                        <option value="Камера видеонаблюдения в подъезде/офисе фиксирует встречу">Запись с камеры наблюдения</option>
+                        <option value="Свекровь/мать, мучимая совестью, сама раскрывает правду">Раскаявшийся свидетель из семьи</option>
+                        <option value="Геолокация в семейном приложении показывает, что антагонист не там, где сказал">Геолокация выдаёт ложь</option>
+                        <option value="Письмо от 'бывшей' антагониста с предупреждением о его методах">Письмо от прошлой жертвы</option>
+                        <option value="Случайно отправленное сообщение в общий семейный чат">Сообщение по ошибке в общий чат</option>
+                        <option value="Старая фотография в семейном архиве, выдающая давний обман">Старое фото из семейного архива</option>
+                    </select>
+                </div>
 
-.header-emoji {
-    font-size: 56px;
-    display: block;
-    margin-bottom: 8px;
-    animation: bounce 2.4s ease-in-out infinite;
-}
+                <!-- Жертва героини -->
+                <div class="form-group">
+                    <label for="sacrifice">💸 Что героиня отдала/потеряла</label>
+                    <select id="sacrifice">
+                        <option value="">Выберите...</option>
+                        <option value="Любимая дача с яблоневым садом, посаженным своими руками">Дача с яблоневым садом</option>
+                        <option value="Машина-мечта, на которую копила 2 года ('Вишенка', красный кроссовер)">Машина-мечта (копила годами)</option>
+                        <option value="Все сбережения семьи (2-3 миллиона рублей), копившиеся годами">Все сбережения (2-3 млн)</option>
+                        <option value="Квартира или доля в жилье, доставшаяся от родителей">Квартира/доля в жилье</option>
+                        <option value="25 лет жизни в режиме жёсткой экономии ради 'общего будущего'">25 лет жизни в экономии</option>
+                        <option value="Карьера или образование, отложенные ради семьи">Карьера/образование</option>
+                        <option value="Здоровье, нервы, годы бессонницы и стресса">Здоровье и нервы</option>
+                        <option value="Отношения с детьми, испорченные манипулятором">Отношения с детьми</option>
+                        <option value="Наследство от родителей, потраченное на нужды антагониста">Наследство от родителей</option>
+                        <option value="Личное достоинство и самоуважение">Личное достоинство</option>
+                        <option value="Бизнес, который героиня строила 10 лет с нуля">Собственный бизнес</option>
+                        <option value="Свадебное золото и фамильные украшения от бабушки">Фамильные украшения</option>
+                        <option value="Загородный дом, построенный на деньги от продажи квартиры родителей">Загородный дом</option>
+                        <option value="Доверие старшего ребёнка, ушедшего жить к отцу">Доверие старшего ребёнка</option>
+                        <option value="Дружба с лучшей подругой, которую антагонист увёл/настроил">Дружба с лучшей подругой</option>
+                        <option value="Доброе имя в профессиональном сообществе">Профессиональная репутация</option>
+                        <option value="Любимое хобби и круг общения, заброшенные ради семьи">Хобби и круг общения</option>
+                        <option value="Молодость и красота — пока антагонист жил в своё удовольствие">Молодость и красота</option>
+                        <option value="Возможность родить второго ребёнка — годы ушли на чужие проблемы">Упущенное материнство</option>
+                        <option value="Пенсионные накопления, переведённые на счёт антагониста">Пенсионные накопления</option>
+                        <option value="Отношения с пожилыми родителями, против которых героиню настроили">Отношения с родителями</option>
+                        <option value="Большая семейная библиотека и коллекция, собранная отцом">Семейная библиотека/коллекция отца</option>
+                    </select>
+                </div>
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
+                <!-- Финал -->
+                <div class="form-group">
+                    <label for="ending">🏆 Финал истории</label>
+                    <select id="ending">
+                        <option value="">Выберите...</option>
+                        <option value="Развод через суд: героиня нанимает жёсткого адвоката, выигрывает дело и получает компенсацию (включая часть имущества антагониста)">Развод + суд + компенсация</option>
+                        <option value="Изгнание антагониста с помощью полиции/МЧС: вызов наряда, составление протокола">Изгнание + полиция/МЧС</option>
+                        <option value="Публичное разоблачение перед всеми гостями/родственниками с документами в руках">Публичное разоблачение</option>
+                        <option value="Антагонист вынужден продать машину/квартиру/имущество, чтобы покрыть долги">Антагонист продаёт имущество</option>
+                        <option value="Героиня молча уходит, хлопнув дверью, оставляя антагониста наедине с последствиями">Уход с гордо поднятой головой</option>
+                        <option value="Новая успешная карьера: героиня открывает свой бизнес или получает повышение">Новая карьера + успех</option>
+                        <option value="Новая любовь: героиня встречает достойного мужчину (сосед, коллега, новый знакомый)">Новая любовь + счастье</option>
+                        <option value="Примирение через установление жёстких границ: антагонист капитулирует и меняет поведение">Примирение через границы</option>
+                        <option value="Уголовное дело против антагониста: мошенничество, подделка документов, статья УК">Уголовное дело и срок</option>
+                        <option value="Антагонист теряет работу/должность из-за раскрывшейся правды">Антагонист теряет работу</option>
+                        <option value="Антагониста бросают его сообщники/любовник, оставляя ни с чем">Антагониста бросают сообщники</option>
+                        <option value="Героиня переезжает в другой город и начинает жизнь с чистого листа">Переезд и жизнь с нуля</option>
+                        <option value="Дети, узнав правду, встают на сторону героини и обрывают связь с антагонистом">Дети возвращаются к героине</option>
+                        <option value="Героиня основывает фонд/проект помощи женщинам в похожей ситуации">Фонд помощи женщинам</option>
+                        <option value="Антагонист публично извиняется, но героиня уже простилась с прошлым">Извинение, но без возврата</option>
+                        <option value="Через год героиня встречает антагониста — и тот не узнаёт в успешной женщине прежнюю жертву">Встреча через год: не узнал</option>
+                        <option value="Антагонист пытается вернуть героиню — она спокойно отказывает">Попытка вернуть и отказ</option>
+                        <option value="Героиня выкупает у антагониста его долю имущества по решению суда">Выкуп доли по суду</option>
+                        <option value="Антагонист остаётся один: все, кого использовал, отвернулись">Антагонист остаётся в одиночестве</option>
+                        <option value="Героиня пишет книгу/блог о пережитом и становится известной">Книга/блог приносят известность</option>
+                        <option value="Героиня усыновляет ребёнка и обретает то, чего была лишена">Усыновление и обретение семьи</option>
+                        <option value="Антагонист сам приходит просить прощения — героиня молча закрывает дверь">Молча закрытая дверь</option>
+                    </select>
+                </div>
 
-h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(28px, 5vw, 44px);
-    font-weight: 900;
-    color: var(--text);
-    letter-spacing: -0.5px;
-    line-height: 1.1;
-}
+                <!-- Длина -->
+                <div class="form-group">
+                    <label for="length">📏 Длина истории</label>
+                    <select id="length">
+                        <option value="">Выберите...</option>
+                        <option value="Короткая история, объём СТРОГО от 1800 до 2200 слов (НЕ МЕНЕЕ 1800 слов)">Короткая (1800-2200 слов)</option>
+                        <option value="Средняя история, объём СТРОГО от 2200 до 2600 слов (НЕ МЕНЕЕ 2200 слов)">Средняя (2200-2600 слов)</option>
+                        <option value="Длинная история, объём СТРОГО от 2600 до 3000 слов (НЕ МЕНЕЕ 2600 слов)">Длинная (2600-3000 слов)</option>
+                    </select>
+                </div>
 
-.subtitle {
-    font-size: 17px;
-    color: var(--text-muted);
-    margin-top: 8px;
-    font-weight: 600;
-}
+                <!-- Кнопки -->
+                <div class="buttons">
+                    <button id="generateBtn" class="btn btn-primary">✨ Сгенерировать промпт</button>
+                    <button id="randomBtn" class="btn btn-secondary">🎲 Случайный выбор</button>
+                </div>
+            </div>
 
-.combo-counter {
-    display: inline-block;
-    margin-top: 14px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 6px 18px;
-    border-radius: 30px;
-    letter-spacing: 0.3px;
-}
+            <!-- Результат -->
+            <div class="result-card" id="resultCard" style="display: none;">
+                <h2>📝 Готовый промпт</h2>
+                <div class="prompt-output" id="promptOutput"></div>
+                <div class="buttons">
+                    <button id="copyBtn" class="btn btn-success">📋 Скопировать в буфер</button>
+                    <button id="geminiBtn" class="btn btn-gemini">🚀 Открыть в Gemini</button>
+                    <button id="claudeBtn" class="btn btn-claude">✦ Открыть в Claude</button>
+                </div>
+                <p class="copy-status" id="copyStatus"></p>
 
-/* ===== CARDS ===== */
-.generator-card, .result-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 32px;
-    margin-bottom: 28px;
-    border: 1px solid var(--border);
-    transition: box-shadow 0.3s;
-}
+                <!-- Промпт для изображения -->
+                <div class="image-prompt-block">
+                    <h3>🖼 Промпт для обложки (Nana Banana 2)</h3>
+                    <p class="image-prompt-hint">Скопируйте и вставьте в нейросеть для генерации обложки к рассказу</p>
+                    <div class="prompt-output" id="imagePromptOutput"></div>
+                    <div class="buttons">
+                        <button id="copyImageBtn" class="btn btn-image">🎨 Скопировать промпт для обложки</button>
+                    </div>
+                    <p class="copy-status" id="copyImageStatus"></p>
+                </div>
+            </div>
+        </main>
 
-.generator-card:hover, .result-card:hover {
-    box-shadow: var(--shadow-hover);
-}
+        <footer>
+            <p>Генератор промптов для драматических историй о справедливости © 2026</p>
+        </footer>
+    </div>
 
-h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--border);
-}
-
-/* ===== FORM ===== */
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-}
-
-@media (max-width: 580px) {
-    .form-row { grid-template-columns: 1fr; }
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-.form-group.full-width {
-    grid-column: 1 / -1;
-}
-
-label {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-}
-
-select {
-    width: 100%;
-    padding: 12px 16px;
-    font-family: 'Nunito', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    background: var(--input-bg);
-    border: 2px solid var(--border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237a7060' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 40px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-select:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(224,123,57,0.15);
-}
-
-select:hover {
-    border-color: var(--primary);
-}
-
-/* ===== BUTTONS ===== */
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-.btn {
-    font-family: 'Nunito', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    padding: 13px 24px;
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
-    letter-spacing: 0.2px;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.btn:active { transform: translateY(0); }
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, #a85219 100%);
-}
-
-.btn-secondary {
-    background: linear-gradient(135deg, var(--secondary) 0%, #e8b820 100%);
-    color: var(--text);
-}
-
-.btn-secondary:hover {
-    background: linear-gradient(135deg, #e8b820 0%, #d4a510 100%);
-}
-
-.btn-success {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-    color: #fff;
-}
-
-.btn-success:hover {
-    background: linear-gradient(135deg, var(--accent-dark) 0%, #235a45 100%);
-}
-
-.btn-gemini {
-    background: linear-gradient(135deg, var(--gemini) 0%, var(--gemini-dark) 100%);
-    color: #fff;
-}
-
-.btn-gemini:hover {
-    background: linear-gradient(135deg, var(--gemini-dark) 0%, #1e5799 100%);
-}
-
-.btn-claude {
-    background: linear-gradient(135deg, var(--claude) 0%, var(--claude-dark) 100%);
-    color: #fff;
-}
-
-.btn-claude:hover {
-    background: linear-gradient(135deg, var(--claude-dark) 0%, #9e5230 100%);
-}
-
-/* ===== SELECTED INFO ===== */
-.selected-info {
-    background: linear-gradient(135deg, #fff8f0 0%, #fff4e6 100%);
-    border: 1px solid #f0d8b8;
-    border-radius: var(--radius-sm);
-    padding: 14px 18px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-muted);
-    line-height: 1.9;
-    margin-bottom: 18px;
-}
-
-.selected-info b {
-    color: var(--primary);
-    font-size: 14px;
-}
-
-/* ===== PROMPT OUTPUT ===== */
-.prompt-output {
-    background: #f8f4ef;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 20px;
-    font-size: 13px;
-    line-height: 1.75;
-    color: var(--text);
-    white-space: pre-wrap;
-    font-family: 'Courier New', monospace;
-    max-height: 520px;
-    overflow-y: auto;
-    margin-bottom: 4px;
-}
-
-/* ===== COPY STATUS ===== */
-.copy-status {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent);
-    min-height: 22px;
-    margin-top: 10px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-/* ===== FOOTER ===== */
-footer {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 13px;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-}
-
-/* ===== IMAGE PROMPT BLOCK ===== */
-.image-prompt-block {
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 2px dashed var(--border);
-}
-
-.image-prompt-block h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
-}
-
-.image-prompt-hint {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 14px;
-}
-
-.btn-image {
-    background: linear-gradient(135deg, #7c4daf 0%, #5e3590 100%);
-    color: #fff;
-}
-
-.btn-image:hover {
-    background: linear-gradient(135deg, #5e3590 0%, #4a2572 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
+    <script src="script.js"></script>
+</body>
+</html>

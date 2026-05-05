@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Генератор промптов: Драматические истории о справедливости</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .btn-claude {
+            background: linear-gradient(135deg, #cc785c 0%, #b5653a 100%);
+            color: #fff;
+        }
+        .btn-claude:hover {
+            background: linear-gradient(135deg, #b5653a 0%, #9e5230 100%);
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -224,6 +234,7 @@
                 <div class="buttons">
                     <button id="copyBtn" class="btn btn-success">📋 Скопировать в буфер</button>
                     <button id="geminiBtn" class="btn btn-gemini">🚀 Открыть в Gemini</button>
+                    <button id="claudeBtn" class="btn btn-claude">✦ Открыть в Claude</button>
                 </div>
                 <p class="copy-status" id="copyStatus"></p>
             </div>

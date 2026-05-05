@@ -547,13 +547,12 @@ ${values.length}
         document.body.removeChild(ta);
     }
 
-    // Генерация промпта для обложки (драматический стиль)
-    // Фото строится из деталей конфликта — без split-композиции
+    // Генерация промпта для обложки — один ключевой момент истории
     function generateImagePrompt(values) {
 
         // Внешность героини по профессии
         const heroineMap = {
-            'Вдова': 'Russian woman, late 40s, tired dignified face, simple neat clothing',
+            'Вдова': 'Russian woman, late 40s, tired but dignified face, simple neat clothing',
             'Финансовый': 'Russian woman, late 30s, professional look, elegant business attire',
             'Жена бизнесмена': 'Russian woman, early 40s, well-dressed, composed expression',
             'Мать взрослого': 'Russian woman, early 50s, warm face, modest clothing',
@@ -572,88 +571,76 @@ ${values.length}
             'Программист': 'Russian woman, mid-30s, smart casual, glasses',
             'Фрилансер': 'Russian woman, early 30s, home casual, tired look',
         };
-
         let heroine = 'Russian woman in her 40s, strong and dignified';
         for (const [key, val] of Object.entries(heroineMap)) {
             if (values.heroine && values.heroine.includes(key)) { heroine = val; break; }
         }
 
-        // Атмосфера и локация из сеттинга
-        const settingMap = {
-            'провинциальный': 'small Russian town, old apartment building, neighbours watching from windows',
-            'Мегаполис': 'modern Moscow or Saint Petersburg apartment interior, city lights in background',
-            'Дача': 'Russian dacha or countryside house, garden, wooden fence, birch trees',
-            'региональный': 'mid-size Russian city street, Soviet-era architecture',
-            'профессиональное': 'office corridor, conference room, professional environment',
-            'Новостройка': 'modern apartment complex, sterile hallway, elevator door',
-            'Курортный': 'southern Russian city, warm light, palm trees or sea in background',
-            'Зарубежье': 'foreign city street, unfamiliar architecture, isolated feeling',
+        // Ключевая сцена из момента открытия правды
+        const revelationScene = {
+            'звонок из учреждения': 'woman frozen mid-motion, phone pressed to her ear, face draining of color, standing in her kitchen',
+            'банковские выписки': 'woman sitting at kitchen table late at night, bank statement spread before her, lamp light, hands trembling slightly',
+            'Переписка в мессенджере': 'woman holding a phone with both hands, reading something on screen, sitting on the edge of a bed in a dark room',
+            'Фотографии из соцсетей': 'woman staring at laptop screen, hand covering her mouth, living room at night',
+            'Частный детектив': 'woman in a modest office, across from a man, manila folder open on the desk between them',
+            'Свидетель': 'two women at a kitchen table, one leaning forward speaking quietly, the other listening with her eyes closed',
+            'Ребёнок': 'woman kneeling down to child\'s level in a hallway, child speaking, woman\'s expression changing',
+            'Документы выпали': 'woman crouching on floor picking up papers that have spilled from a folder, reading one sheet with wide eyes',
+            'Звонок из банка': 'woman standing at a window, phone in hand, city or yard outside, expression frozen in disbelief',
+            'Видео': 'woman watching laptop screen in a dark room, blue screen light on her face, expression of quiet devastation',
+            'Курьер': 'woman at front door, holding unexpected package or document, courier already leaving, she reads the label',
+            'Госуслуги': 'woman at her desk, computer screen showing official document, leaning forward, expression of shock',
+            'Геолокация': 'woman in bed at night, phone screen illuminating her face, map pin visible on screen',
+            'Анонимное письмо': 'woman standing in hallway or near mailbox, holding handwritten letter, reading it',
+            'старое фото': 'woman sitting on floor, old photo album open, holding one photograph up to the light',
         };
-        let location = 'Russian apartment interior, dramatic lighting';
-        for (const [key, val] of Object.entries(settingMap)) {
-            if (values.setting && values.setting.includes(key)) { location = val; break; }
+        let scene = 'woman discovering the truth — sitting alone late at night, documents or phone before her, expression of quiet devastation and emerging strength';
+        for (const [key, val] of Object.entries(revelationScene)) {
+            if (values.revelation && values.revelation.toLowerCase().includes(key.toLowerCase())) { scene = val; break; }
         }
 
-        // Ключевой предмет из предательства
-        const betrayalProps = {
-            'Финансовое': 'bank statements spread on a table, numbers highlighted in red',
-            'Захват жилья': 'changed door lock, keys on the floor',
-            'Фальшивая': 'medical documents with stamps, prescription papers',
-            'унижение': 'crowded room, frozen faces of witnesses',
-            'детьми': 'child standing between two adults, looking confused',
-            'ипотека': 'mortgage documents, second set of keys',
-            'кредиты': 'stack of debt notices, credit cards',
-            'Шантаж': 'phone screen with threatening messages',
-            'наследство': 'will documents, notary seal',
-            'Клевета': 'smartphone with social media posts, shocked face',
-            'дарственная': 'property transfer documents with signature',
-            'Тайный ребёнок': 'birth certificate, child photo hidden in wallet',
-            'Двойная жизнь': 'two phones, two sets of keys, hotel receipt',
-            'завещания': 'official document with forged signature',
-            'Газлайтинг': 'woman looking at herself in mirror, uncertain expression',
+        // Атмосфера из сеттинга
+        const settingAtmo = {
+            'провинциальный': 'small-town Russian interior, modest furnishings, lace curtains, old wallpaper',
+            'Мегаполис': 'modern city apartment, panoramic window, city lights at night in the background',
+            'Дача': 'Russian dacha interior or porch, wooden walls, garden visible through window',
+            'региональный': 'mid-size Russian city apartment, typical panel building interior',
+            'профессиональное': 'office environment, professional setting, muted corporate colors',
+            'Новостройка': 'modern new apartment, IKEA-style furniture, clean but impersonal',
+            'Курортный': 'warm southern Russian setting, light-filled room, plants',
+            'Зарубежье': 'foreign apartment, unfamiliar details, sense of isolation',
         };
-        let prop = 'important documents on a table, dramatic shadows';
-        for (const [key, val] of Object.entries(betrayalProps)) {
-            if (values.betrayal && values.betrayal.includes(key)) { prop = val; break; }
+        let atmosphere = 'authentic Russian apartment interior, lived-in details';
+        for (const [key, val] of Object.entries(settingAtmo)) {
+            if (values.setting && values.setting.includes(key)) { atmosphere = val; break; }
         }
 
-        // Эмоция героини из тона
-        const toneEmotion = {
-            'Холодный': 'ice-cold determined expression, composed, calculating gaze',
-            'Горький': 'bitter half-smile, knowing eyes, quiet sorrow',
-            'Гневный': 'barely contained fury, jaw set, intense eyes',
-            'Сдержанный': 'dignified silence, straight posture, quiet strength',
-            'Усталый': 'tired wisdom in eyes, deep calm after a storm',
+        // Цветовое настроение из тона
+        const toneColor = {
+            'Холодный': 'cold blue-grey color palette, clinical light, steel tones',
+            'Горький': 'desaturated warm tones, amber shadows, melancholy mood',
+            'Гневный': 'high contrast, deep shadows, red-tinged accents, tension',
+            'Сдержанный': 'muted neutral palette, quiet dignity, soft shadows',
+            'Усталый': 'faded warm tones, soft window light, stillness',
         };
-        let emotion = 'strong composed expression, quiet dignity';
-        for (const [key, val] of Object.entries(toneEmotion)) {
-            if (values.tone && values.tone.includes(key)) { emotion = val; break; }
+        let colorMood = 'cinematic color grading, desaturated midtones, dramatic shadows';
+        for (const [key, val] of Object.entries(toneColor)) {
+            if (values.tone && values.tone.includes(key)) { colorMood = val; break; }
         }
 
-        // Световая атмосфера из финала
-        const endingLight = values.ending && (
-            values.ending.includes('карьера') || values.ending.includes('любовь') ||
-            values.ending.includes('переезд') || values.ending.includes('книга') ||
-            values.ending.includes('свобода') || values.ending.includes('уход')
-        )
-            ? 'warm golden light entering from the side, hopeful atmosphere'
-            : 'dramatic cinematic lighting, strong contrast, shadows and light fighting';
+        return `Cinematic photorealistic cover image for a Russian drama story. Horizontal 16:9 format, high quality. No text, no watermarks, no logos.
 
-        return `Cinematic photorealistic cover image for a Russian drama story, horizontal 16:9 format, high quality, no text, no watermarks.
+Scene: ${scene}.
 
-Main subject: ${heroine}, ${emotion}.
+Character: ${heroine}.
 
-Setting: ${location}.
+Environment: ${atmosphere}.
 
-Key story element in frame: ${prop}.
+Color and mood: ${colorMood}.
 
-Lighting: ${endingLight}.
+Style: cinematic photorealism, emotionally charged single moment, authentic Russian domestic environment. Natural skin textures, real props, believable details — not staged, but as if caught in a real private moment. Shallow depth of field, sharp focus on the woman's face and the key detail in the scene.
 
-Composition: the woman is the emotional center of the frame, story details surround her naturally — not staged, but as if caught in a real moment. Close-up or medium shot, shallow depth of field, sharp focus on her face and the key prop.
-
-Style: cinematic photorealism, Russian TV drama quality, emotionally charged, authentic Russian domestic or urban environment. Natural skin textures, real fabric details, believable props. No artificial studio look — this feels like a real moment captured.
-
-Technical: 16:9 aspect ratio, 1280x720px minimum, film grain texture, rich color grading with desaturated midtones and warm or cold accent depending on the lighting.`;
+Technical: 16:9 aspect ratio, 1280x720px minimum, film grain, rich cinematic color grading.`;
     }
 
     // Сброс красной рамки при выборе

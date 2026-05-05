@@ -172,6 +172,26 @@ header h1 {
     box-shadow: 0 6px 20px rgba(66, 133, 244, 0.5);
 }
 
+.btn-claude {
+    background: linear-gradient(135deg, #cc785c 0%, #b5653a 100%);
+    box-shadow: 0 4px 15px rgba(204, 120, 92, 0.3);
+}
+
+.btn-claude:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 120, 92, 0.5);
+}
+
+.btn-image {
+    background: linear-gradient(135deg, #7c4daf 0%, #5e3590 100%);
+    box-shadow: 0 4px 15px rgba(124, 77, 175, 0.3);
+}
+
+.btn-image:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 77, 175, 0.5);
+}
+
 .btn:active {
     transform: translateY(0);
 }
@@ -192,19 +212,9 @@ header h1 {
     margin-bottom: 15px;
 }
 
-.prompt-output::-webkit-scrollbar {
-    width: 8px;
-}
-
-.prompt-output::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-}
-
-.prompt-output::-webkit-scrollbar-thumb {
-    background: #f39c12;
-    border-radius: 4px;
-}
+.prompt-output::-webkit-scrollbar { width: 8px; }
+.prompt-output::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
+.prompt-output::-webkit-scrollbar-thumb { background: #f39c12; border-radius: 4px; }
 
 .copy-status {
     text-align: center;
@@ -213,6 +223,27 @@ header h1 {
     font-weight: 600;
     min-height: 24px;
     transition: opacity 0.3s ease;
+}
+
+/* Image prompt block */
+.image-prompt-block {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 2px dashed rgba(243, 156, 18, 0.3);
+}
+
+.image-prompt-block h3 {
+    color: #f39c12;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.image-prompt-hint {
+    font-size: 0.88rem;
+    color: #b8b8d1;
+    margin-bottom: 14px;
+    font-style: italic;
 }
 
 /* Footer */
@@ -225,40 +256,16 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 0.95rem;
-    }
-
-    .generator-card,
-    .result-card {
-        padding: 20px;
-    }
-
-    .btn {
-        min-width: 100%;
-    }
-
-    .buttons {
-        flex-direction: column;
-    }
+    header h1 { font-size: 2rem; }
+    .subtitle { font-size: 0.95rem; }
+    .generator-card, .result-card { padding: 20px; }
+    .btn { min-width: 100%; }
+    .buttons { flex-direction: column; }
 }
 
-/* Анимация появления результата */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.result-card {
-    animation: fadeInUp 0.5s ease-out;
-}
+.result-card { animation: fadeInUp 0.5s ease-out; }

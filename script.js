@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const generateBtn = document.getElementById('generateBtn');
     const randomBtn = document.getElementById('randomBtn');
     const copyBtn = document.getElementById('copyBtn');
-    const geminiBtn = document.getElementById('geminiBtn');
+    const claudeBtn = document.getElementById('claudeBtn');
     const resultCard = document.getElementById('resultCard');
     const promptOutput = document.getElementById('promptOutput');
     const copyStatus = document.getElementById('copyStatus');
@@ -332,11 +332,36 @@ ${values.length}
         }
     }
 
-    // Привязываем события
+    // Открытие в Claude
+    function openClaude() {
+        const text = promptOutput.textContent;
+
+        // claude.ai поддерживает Universal Links на iOS и App Links на Android —
+        // если приложение установлено, ОС сама предложит/откроет его.
+        // На Windows десктопное приложение Claude не регистрирует свою URI-схему,
+        // поэтому всегда открывается браузер (пользователь может сам переключиться в приложение).
+        const claudeUrl = 'https://claude.ai/new';
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                showCopyStatus('✅ Промпт скопирован! Открываю Claude...');
+                setTimeout(() => {
+                    window.open(claudeUrl, '_blank');
+                }, 500);
+            }).catch(() => {
+                fallbackCopy(text);
+                window.open(claudeUrl, '_blank');
+            });
+        } else {
+            fallbackCopy(text);
+            window.open(claudeUrl, '_blank');
+        }
+    }
     if (generateBtn) generateBtn.addEventListener('click', generatePrompt);
     if (randomBtn) randomBtn.addEventListener('click', randomSelect);
     if (copyBtn) copyBtn.addEventListener('click', copyToClipboard);
     if (geminiBtn) geminiBtn.addEventListener('click', openGemini);
+    if (claudeBtn) claudeBtn.addEventListener('click', openClaude);
 
     // Сброс красной рамки при выборе
     for (const key in selects) {
